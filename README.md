@@ -119,17 +119,23 @@ Demo video: https://drive.google.com/file/d/11F6s_rrXdMRHEVJ9h9SZ_LpjemjGbHiI/vi
 
 Add screenshots of:
 
-* Dashboard: <img width="969" height="743" alt="{BCD4D05B-8ABE-4D79-940F-EAFF49A6DB81}" src="https://github.com/user-attachments/assets/47da193c-bef1-4ada-af4e-00f3e8277185" />
+* Dashboard: <img width="989" height="746" alt="{9D8D750E-2CBE-4D18-B124-556821A33309}" src="https://github.com/user-attachments/assets/51baa14b-ba72-44a3-9563-973d43f6ab1d" />
 
-* Feedback Analysis View: <img width="1039" height="872" alt="{2668CDAE-AE49-4427-92AF-524FA33E2592}" src="https://github.com/user-attachments/assets/b05be452-6d3c-453c-a87f-08d341856e41" />
 
-* Theme Clustering Results: <img width="1045" height="776" alt="{5E513BEF-2E79-4BD5-A923-EE733D7A43BB}" src="https://github.com/user-attachments/assets/b7fe2fd7-738e-4711-b276-f3d35cabc7ba" />
 
-* Sprint Planning Board: <img width="1039" height="663" alt="{1B866BF2-990F-46D1-9AA3-AC451EE480C0}" src="https://github.com/user-attachments/assets/f68069cd-1626-449c-9870-eef5d3b90511" />
+* Feedback Analysis View: <img width="947" height="868" alt="{9C91DE8B-54C3-499A-A05A-09B1613B3349}" src="https://github.com/user-attachments/assets/28e9597f-2344-4ec3-870f-f7b04addd2f8" />
 
-* GitHub Issue Generator: <img width="1049" height="822" alt="{8B52763C-DBE5-411F-ADB3-F3C9B41832D0}" src="https://github.com/user-attachments/assets/63153a3c-8f40-480c-ad90-9f9127bfeed9" />
+* Theme Clustering Results: <img width="946" height="873" alt="{5072576A-BE6C-45FD-955D-AFD25DCC5E27}" src="https://github.com/user-attachments/assets/3f846a66-98e9-4996-a851-11b85d7cd63c" />
 
-* Engineering Plan Output: <img width="1043" height="651" alt="{ECCC0B94-1162-4A36-818D-346C6F4CA357}" src="https://github.com/user-attachments/assets/621dc021-72ca-4643-a712-800211a2c70d" />
+<img width="946" height="868" alt="{4398E3F1-9D09-4AAD-909A-2C71CBFCC721}" src="https://github.com/user-attachments/assets/13670f94-6da9-4913-8f72-1b70e5d23ce3" />
+
+
+* Sprint Planning Board: <img width="944" height="870" alt="{4B09225B-4B75-4F34-BF98-5BA4529B6B4A}" src="https://github.com/user-attachments/assets/dd7057ae-2af2-4fd6-82e7-77cc320a08f4" />
+
+
+* GitHub Issue Generator: <img width="949" height="793" alt="{9461AC29-1994-47E4-9E34-48F94EBC9E0C}" src="https://github.com/user-attachments/assets/31041903-d613-4369-b845-24f696fa09fe" />
+
+* Engineering Plan Output: <img width="942" height="868" alt="{D2CD60B5-45DE-40A4-9F2C-076F464B6AF3}" src="https://github.com/user-attachments/assets/ae66ea22-dda3-4934-8abb-e5d7ff124096" />
 
 
 ---
