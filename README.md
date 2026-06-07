@@ -110,7 +110,6 @@ Codex tools were heavily utilized throughout development and OpenAI api key for 
 
 ## Demo
 
-Add your demo or pitch video link here.
 Live Demo: https://vibe-pm-dev.vercel.app/
 
 Demo video: https://drive.google.com/file/d/11F6s_rrXdMRHEVJ9h9SZ_LpjemjGbHiI/view?usp=sharing
