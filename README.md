@@ -1,6 +1,6 @@
 # Vibe PM
 
-## Overview
+MVP LINK: 
 Vibe PM is a production-quality AI-powered product management assistant that transforms raw customer feedback from play store or app store into prioritized engineering sprint plans. Users can paste Play Store reviews, support tickets, customer complaints, feature requests, or upload CSV files. The platform automatically extracts feedback items, clusters similar requests into themes, prioritizes opportunities, generates sprint recommendations, creates GitHub-ready issues, and produces engineering implementation plans tailored to a React + Next.js codebase.
 
 ---
