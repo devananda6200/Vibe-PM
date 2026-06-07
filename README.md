@@ -1,139 +1,235 @@
 # Vibe PM
 
-Production-quality MVP for turning raw customer feedback into a prioritized
-engineering sprint plan.
+## Overview
+Vibe PM is a production-quality AI-powered product management assistant that transforms raw customer feedback from play store or app store into prioritized engineering sprint plans. Users can paste Play Store reviews, support tickets, customer complaints, feature requests, or upload CSV files. The platform automatically extracts feedback items, clusters similar requests into themes, prioritizes opportunities, generates sprint recommendations, creates GitHub-ready issues, and produces engineering implementation plans tailored to a React + Next.js codebase.
 
-Users can paste App Store reviews, support tickets, customer complaints,
-feature requests, or upload a CSV. The app extracts feedback items, clusters
-themes, scores impact, recommends two sprints, generates GitHub-ready issues,
-and produces engineering implementation plans for a React + Next.js codebase.
-Android teams can paste a Google Play Store URL or package name to import
-public review snippets. Engineers can also paste or upload a project structure
-so implementation plans can suggest possible affected files from the actual
-repo shape.
+---
+
+## Problem Statement
+
+Product teams receive customer feedback from multiple sources such as app reviews, support tickets, emails, and feature requests. Manually analyzing large volumes of feedback, identifying recurring themes, prioritizing improvements, and converting insights into actionable engineering tasks is time-consuming and inefficient.
+
+---
+
+## Solution
+
+Vibe PM automates the entire feedback-to-development workflow. Using AI-powered analysis, the platform:
+
+* Extracts actionable feedback from raw customer inputs as csv files, direct text, app link and project tree structure
+* Groups similar requests into meaningful themes.
+* Calculates impact scores based on frequency, sentiment, and severity.
+* Prioritizes opportunities automatically.
+* Generates sprint plans for engineering teams.
+* Creates GitHub-ready issues with acceptance criteria.
+* drafts on github issues page of the repository.
+* Produces implementation guidance based on the uploaded project structure.
+
+This enables teams to move from customer feedback to execution-ready engineering plans within minutes.
+
+---
+
+## Features
+
+* AI-powered feedback extraction and analysis
+* Theme clustering and opportunity identification
+* Impact scoring and prioritization engine
+* Automated sprint planning
+* GitHub-ready issue generation
+* Engineering implementation recommendations
+* Google Play Store review import support
+* Project structure-aware codebase analysis
+* Interactive analytics and visualizations
+* Built-in local AI fallback when OpenAI API is unavailable
+
+---
 
 ## Tech Stack
 
-- Next.js 15 App Router
-- TypeScript
-- Tailwind CSS
-- shadcn/ui-style components
-- OpenAI API with local demo fallback
-- Recharts
+### Frontend
 
-## Run Locally
+* Next.js 15 (App Router)
+* TypeScript
+* Tailwind CSS
+* shadcn/ui Components
+* Recharts
 
-```bash
-npm install
-npm run dev
-```
+### Backend
 
-Open [http://localhost:3000](http://localhost:3000).
+* Next.js API Routes
+* TypeScript
 
-## OpenAI Setup
+### Database
 
-The app works without an API key using the built-in local analysis engine. To
-enable OpenAI-backed extraction, clustering, sprint planning, issue generation,
-and engineering guidance, create `.env.local`:
+* No dedicated database required for MVP
 
-```bash
-OPENAI_API_KEY=your_api_key_here
-OPENAI_MODEL=gpt-4o-mini
-```
+### APIs
 
-Never commit `.env.local` or a real API key. Keep `.env.example` as placeholders
-only.
+* OpenAI API
+* Google Play Store Public Data Sources
 
-## Deploy
+### Hosting
 
-For Vercel or another host, add these environment variables in the provider's
-dashboard before deploying:
+* Vercel
+* Any Node.js-compatible hosting platform
 
-```bash
-OPENAI_API_KEY=your_real_key_in_the_host_dashboard
-OPENAI_MODEL=gpt-4o-mini
-```
+---
 
-Then deploy from GitHub normally. The repo is safe to publish as long as real
-secret files stay ignored.
+## Codex / OpenAI Usage
 
-## GitHub Publish Checklist
+Codex tools were heavily utilized throughout development and OpenAI api key for calling llm.
 
-```bash
-git status --short
-git add .
-git commit -m "Prepare Vibe PM for deployment"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-git push -u origin main
-```
+### Ideation
+- Used ChatGPT and Codex to brainstorm the product concept and define the end-to-end workflow from customer feedback collection to sprint planning.
+- Explored different approaches for feedback clustering, prioritization, and engineering recommendation generation.
+- Refined feature requirements and user experience flows through AI-assisted discussions.
 
-If `git remote add origin` says the remote already exists, run:
+### Architecture Planning
+- Leveraged ChatGPT to design the system architecture, including frontend, backend APIs, AI processing pipeline, and data flow.
+- Planned the Next.js App Router structure, component hierarchy, and modular code organization.
+- Designed the feedback analysis pipeline consisting of extraction, clustering, scoring, sprint generation, and issue creation stages.
 
-```bash
-git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-```
+### Code Generation
+- Used Codex and ChatGPT to accelerate development of React components, TypeScript interfaces, API routes, utility functions, and data processing logic.
+- Generated boilerplate code for UI layouts, charts, forms, and reusable components.
+- Assisted in implementing feedback analysis and sprint planning workflows.
 
-## Demo Flow
+### Debugging
+- Used AI assistance to identify runtime errors, resolve TypeScript issues, fix API integration problems, and optimize application behavior.
+- Troubleshot component rendering issues, data flow inconsistencies, and state management challenges.
+- Improved overall code quality through AI-guided refactoring suggestions.
 
-1. Click `Sample` to load 100 realistic SaaS customer reviews.
-2. Optionally expand `Play Store import` and import public review snippets from
-   a Google Play URL.
-3. Optionally expand `Project structure` and paste a repo tree.
-4. Click `Analyze Feedback`.
-5. Review the generated themes, priority scores, sprint plan, GitHub issues,
-   engineering plan, and AI pipeline.
+### Documentation
+- Used ChatGPT to create technical documentation, README files, deployment guides, setup instructions, and feature descriptions.
+- Generated developer-friendly explanations for project structure, environment configuration, and workflow processes.
+- Improved clarity and consistency across project documentation.
 
-The interface uses a bold monochrome and neon-lime visual direction inspired by
-editorial product tools: heavy display headlines, mono body text, sharp borders,
-and responsive panels with no image dependencies.
+### API Integration
+- Integrated OpenAI APIs to power feedback extraction, theme clustering, impact scoring, sprint recommendation generation, GitHub issue creation, and engineering implementation planning.
+- Connected AI capabilities through secure Next.js API routes and environment variable configuration.
+---
 
-In the GitHub Issues tab, paste a repository URL such as
-`https://github.com/acme/app`. Each generated issue can then open a prefilled
-GitHub issue draft with markdown title, body, acceptance criteria, and labels.
+## Demo
 
-The sample dataset includes dark mode requests, offline mode requests,
-performance complaints, sync issues, and mobile app feature requests.
+Add your demo or pitch video link here.
 
-Play Store imports use the public app page plus a public review batch endpoint.
-The app attempts to import up to 80 usable review snippets before analysis.
+
+---
+
+## Screenshots
+
+Add screenshots of:
+
+* Dashboard
+* Feedback Analysis View
+* Theme Clustering Results
+* Sprint Planning Board
+* GitHub Issue Generator
+* Engineering Plan Output
+
+---
 
 ## Impact Scoring
 
-```text
-Impact Score = frequency * 0.5 + sentiment * 0.3 + severity * 0.2
-```
+Impact Score Formula:
 
-Scores are normalized to 0-100:
+Frequency × 0.5 + Sentiment × 0.3 + Severity × 0.2
 
-Priorities are assigned continuously from the highest score:
+Scores are normalized to a scale of 0–100.
 
-- Highest impact theme: P1
-- Next theme: P2
-- Next theme: P3
-- Remaining lower-impact themes: P4
+Priority Assignment:
 
-Sprint entries are deduped, and GitHub issues plus engineering plans are
-created for every priority theme. Engineering plans use uploaded project
-structure when available and avoid repeating the same affected file candidate
-across themes.
+* P1 → Highest Impact Theme
+* P2 → Second Highest Impact Theme
+* P3 → Third Highest Impact Theme
+* P4 → Remaining Lower Impact Themes
+
+---
 
 ## Project Structure
 
 ```text
 app/
-  api/analyze/route.ts       API route for the AI pipeline
-  api/play-store/route.ts    API route for Play Store imports
-  globals.css                Tailwind theme tokens
-  layout.tsx                 Root layout and toaster
-  page.tsx                   Single-page app entry
+├── api/
+│   ├── analyze/
+│   │   └── route.ts
+│   └── play-store/
+│       └── route.ts
+├── globals.css
+├── layout.tsx
+└── page.tsx
+
 components/
-  app/                       Product UI and charts
-  ui/                        shadcn/ui-style primitives
+├── app/
+└── ui/
+
 lib/
-  analysis.ts                OpenAI integration and local fallback
-  play-store.ts              Play Store app metadata and review scraping
-  sample-data.ts             100-review demo dataset
-  types.ts                   Shared TypeScript types
-  utils.ts                   Utility helpers
+├── analysis.ts
+├── play-store.ts
+├── sample-data.ts
+├── types.ts
+└── utils.ts
 ```
+
+---
+
+## Environment Variables
+
+Create a `.env.local` file:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+OPENAI_MODEL=gpt-4o-mini
+```
+
+Do not commit real API keys to GitHub.
+
+---
+
+## How to Run Locally
+
+```bash
+git clone <repo-url>
+cd <project-folder>
+
+npm install
+
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Deployment
+
+Add the following environment variables to your hosting provider:
+
+```env
+OPENAI_API_KEY=your_real_api_key
+OPENAI_MODEL=gpt-4o-mini
+```
+
+Deploy directly from GitHub using Vercel or any compatible hosting service.
+
+---
+
+## Sample Workflow
+
+1. Load the sample dataset or upload customer feedback.
+2. Import Google Play Store reviews (optional).
+3. Upload or paste project structure (optional).
+4. Click **Analyze Feedback**.
+5. Review:
+
+   * Themes
+   * Impact Scores
+   * Priority Rankings
+   * Sprint Plans
+   * GitHub Issues
+   * Engineering Recommendations
+
+The platform converts raw customer sentiment into actionable engineering roadmaps within minutes.
