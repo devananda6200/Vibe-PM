@@ -119,12 +119,18 @@ Demo video: https://drive.google.com/file/d/11F6s_rrXdMRHEVJ9h9SZ_LpjemjGbHiI/vi
 
 Add screenshots of:
 
-* Dashboard
-* Feedback Analysis View
-* Theme Clustering Results
-* Sprint Planning Board
-* GitHub Issue Generator
-* Engineering Plan Output
+* Dashboard: <img width="969" height="743" alt="{BCD4D05B-8ABE-4D79-940F-EAFF49A6DB81}" src="https://github.com/user-attachments/assets/47da193c-bef1-4ada-af4e-00f3e8277185" />
+
+* Feedback Analysis View: <img width="1039" height="872" alt="{2668CDAE-AE49-4427-92AF-524FA33E2592}" src="https://github.com/user-attachments/assets/b05be452-6d3c-453c-a87f-08d341856e41" />
+
+* Theme Clustering Results: <img width="1045" height="776" alt="{5E513BEF-2E79-4BD5-A923-EE733D7A43BB}" src="https://github.com/user-attachments/assets/b7fe2fd7-738e-4711-b276-f3d35cabc7ba" />
+
+* Sprint Planning Board: <img width="1039" height="663" alt="{1B866BF2-990F-46D1-9AA3-AC451EE480C0}" src="https://github.com/user-attachments/assets/f68069cd-1626-449c-9870-eef5d3b90511" />
+
+* GitHub Issue Generator: <img width="1049" height="822" alt="{8B52763C-DBE5-411F-ADB3-F3C9B41832D0}" src="https://github.com/user-attachments/assets/63153a3c-8f40-480c-ad90-9f9127bfeed9" />
+
+* Engineering Plan Output: <img width="1043" height="651" alt="{ECCC0B94-1162-4A36-818D-346C6F4CA357}" src="https://github.com/user-attachments/assets/621dc021-72ca-4643-a712-800211a2c70d" />
+
 
 ---
 
