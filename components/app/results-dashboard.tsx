@@ -130,19 +130,27 @@ export function ResultsDashboard({ result, isLoading }: ResultsDashboardProps) {
         </TabsList>
 
         <TabsContent value="themes">
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_430px]">
-            <div className="grid gap-3">
-              {result.themes.map((theme) => (
-                <ThemeCard key={theme.id} theme={theme} />
-              ))}
-            </div>
-            <FrequencyChart themes={result.themes} />
+          <div className="grid gap-3">
+            <CompactSection
+              title="Theme Frequency Chart"
+              description="Open only when you want the visual spread."
+            >
+              <FrequencyChart themes={result.themes} />
+            </CompactSection>
+            {result.themes.map((theme) => (
+              <ThemeCard key={theme.id} theme={theme} />
+            ))}
           </div>
         </TabsContent>
 
         <TabsContent value="priorities">
-          <div className="grid gap-4">
-            <ImpactCharts themes={result.themes} />
+          <div className="grid gap-3">
+            <CompactSection
+              title="Impact Charts"
+              description="Score bars and priority distribution."
+            >
+              <ImpactCharts themes={result.themes} />
+            </CompactSection>
             <PriorityTable themes={result.themes} />
           </div>
         </TabsContent>
@@ -260,42 +268,42 @@ function DashboardSkeleton() {
 
 function ThemeCard({ theme }: { theme: Theme }) {
   return (
-    <Card>
-      <CardHeader className="pb-2">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <div className="flex flex-wrap items-center gap-2">
-              <CardTitle>{theme.name}</CardTitle>
-              <PriorityBadge priority={theme.priority} />
-            </div>
-            <CardDescription className="mt-2 line-clamp-2">
-              {theme.summary}
-            </CardDescription>
+    <details className="group border border-foreground bg-card">
+      <summary className="grid cursor-pointer list-none gap-3 p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <CardTitle>{theme.name}</CardTitle>
+            <PriorityBadge priority={theme.priority} />
           </div>
-          <div className="grid min-w-[154px] grid-cols-2 gap-2 text-center">
-            <MiniMetric label="Score" value={theme.score} />
-            <MiniMetric label="Mentions" value={theme.mentions} />
-          </div>
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">
+            {theme.summary}
+          </p>
         </div>
-      </CardHeader>
-      <CardContent className="grid gap-3">
+        <div className="grid grid-cols-3 gap-2 text-center sm:min-w-[220px]">
+          <MiniMetric label="Score" value={theme.score} />
+          <MiniMetric label="Mentions" value={theme.mentions} />
+          <MiniMetric label="Severity" value={theme.severity} />
+        </div>
+      </summary>
+      <div className="grid gap-3 border-t border-foreground p-4">
         <div className="grid gap-2 md:grid-cols-3">
           <SignalMeter label="Frequency" value={theme.mentions} />
           <SignalMeter label="Sentiment" value={theme.sentiment} />
           <SignalMeter label="Severity" value={theme.severity} />
         </div>
-        <DetailsBlock label="Evidence">
-            {theme.representativeQuotes.map((quote) => (
-              <div
-                key={quote}
-                className="border border-foreground bg-secondary/45 px-3 py-2 text-sm leading-6 text-muted-foreground"
-              >
+        <div className="grid gap-2">
+          <SectionLabel>Evidence</SectionLabel>
+          {theme.representativeQuotes.map((quote) => (
+            <div
+              key={quote}
+              className="border border-foreground bg-secondary/45 px-3 py-2 text-sm leading-6 text-muted-foreground"
+            >
               {quote}
             </div>
           ))}
-        </DetailsBlock>
-      </CardContent>
-    </Card>
+        </div>
+      </div>
+    </details>
   );
 }
 
@@ -354,7 +362,7 @@ function SprintColumn({
 }) {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="border-b border-foreground pb-4">
         <div className="flex items-center gap-2">
           <GitPullRequest className="h-4 w-4 text-foreground" aria-hidden="true" />
           <CardTitle>{title}</CardTitle>
@@ -368,18 +376,21 @@ function SprintColumn({
           </div>
         ) : null}
         {items.map((item) => (
-          <div key={`${title}-${item.theme}`} className="border border-foreground p-4">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="font-semibold">{item.theme}</div>
-              <div className="flex items-center gap-2">
-                <PriorityBadge priority={item.priority} />
-                <Badge variant="outline">{item.score}</Badge>
+          <details key={`${title}-${item.theme}`} className="group border border-foreground">
+            <summary className="grid cursor-pointer list-none gap-2 p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-bold">{item.theme}</span>
+                  <PriorityBadge priority={item.priority} />
+                </div>
+                <p className="mt-1 line-clamp-1 text-sm leading-6 text-muted-foreground">
+                  {item.goal}
+                </p>
               </div>
-            </div>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              {item.goal}
-            </p>
-            <DetailsBlock label="Scope and metric">
+              <Badge variant="outline">{item.score}</Badge>
+            </summary>
+            <div className="grid gap-3 border-t border-foreground p-3">
+              <SectionLabel>Scope</SectionLabel>
               <ul className="grid gap-2 text-sm">
                 {item.scope.map((scope) => (
                   <li key={scope} className="flex gap-2 leading-6">
@@ -394,8 +405,8 @@ function SprintColumn({
               <div className="border border-foreground bg-primary px-3 py-2 text-xs font-bold text-primary-foreground">
                 {item.successMetric}
               </div>
-            </DetailsBlock>
-          </div>
+            </div>
+          </details>
         ))}
       </CardContent>
     </Card>
@@ -485,41 +496,32 @@ function IssueCard({
               {brief}
             </CardDescription>
           </div>
-          <Button type="button" variant="outline" size="sm" onClick={copyIssue}>
-            <Clipboard className="h-4 w-4" aria-hidden="true" />
-            Copy
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button type="button" variant="outline" size="sm" onClick={copyIssue}>
+              <Clipboard className="h-4 w-4" aria-hidden="true" />
+              Copy
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={openGithubDraft}
+              disabled={!draftUrl}
+            >
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              Draft
+            </Button>
+          </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap gap-2">
+      <CardContent className="grid gap-3">
+        <div className="flex flex-wrap gap-2 border-y border-foreground py-2">
           <PriorityBadge priority={issue.priority} />
           {issue.labels.map((label) => (
             <Badge key={label} variant="secondary">
               {label}
             </Badge>
           ))}
-        </div>
-        <div className="mt-3 flex flex-col gap-2 border border-foreground bg-primary p-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <div className="text-xs font-bold uppercase text-primary-foreground">
-              Draft this cluster in GitHub
-            </div>
-            <div className="mt-1 text-xs leading-5 text-primary-foreground/80">
-              Opens a prefilled issue composer for review before publishing.
-            </div>
-          </div>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={openGithubDraft}
-            disabled={!draftUrl}
-            className="bg-card"
-          >
-            <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            Open Draft
-          </Button>
         </div>
         <DetailsBlock label="Markdown issue">
           <pre className="max-h-[360px] overflow-auto whitespace-pre-wrap border border-foreground bg-foreground p-3 text-xs leading-6 text-card">
@@ -546,19 +548,18 @@ function IssueCard({
 
 function EngineeringPlanCard({ plan }: { plan: EngineeringPlan }) {
   return (
-    <Card>
-      <CardHeader className="pb-3">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <Code2 className="h-4 w-4 text-foreground" aria-hidden="true" />
-              <CardTitle>{plan.theme}</CardTitle>
-            </div>
-            <CardDescription className="mt-2 line-clamp-2">
-              {plan.implementationApproach}
-            </CardDescription>
+    <details className="group border border-foreground bg-card">
+      <summary className="grid cursor-pointer list-none gap-3 p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+        <div>
+          <div className="flex items-center gap-2">
+            <Code2 className="h-4 w-4 text-foreground" aria-hidden="true" />
+            <CardTitle>{plan.theme}</CardTitle>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">
+            {plan.implementationApproach}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
             <Badge variant="outline">{plan.estimatedEffort}</Badge>
             <Badge
               variant={
@@ -571,52 +572,45 @@ function EngineeringPlanCard({ plan }: { plan: EngineeringPlan }) {
                 ? "Repo-aware"
                 : "Suggested"}
             </Badge>
+        </div>
+      </summary>
+      <div className="grid gap-4 border-t border-foreground p-4 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div>
+          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase text-muted-foreground">
+            <FileCode2 className="h-3.5 w-3.5" aria-hidden="true" />
+            Possible Affected Files
+          </div>
+          <div className="grid gap-2">
+            {plan.affectedFiles.length ? plan.affectedFiles.map((file) => (
+              <code
+                key={file}
+                className="border border-foreground bg-secondary/50 px-3 py-2 text-xs"
+              >
+                {file}
+              </code>
+            )) : (
+              <div className="border border-foreground bg-secondary/40 px-3 py-2 text-xs text-muted-foreground">
+                No unique file candidates found for this theme.
+              </div>
+            )}
           </div>
         </div>
-      </CardHeader>
-      <CardContent>
-        <DetailsBlock label="Possible files and tasks">
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-            <div>
-              <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase text-muted-foreground">
-                <FileCode2 className="h-3.5 w-3.5" aria-hidden="true" />
-                Possible Affected Files
+        <div>
+          <SectionLabel>Tasks</SectionLabel>
+          <div className="mt-2 grid gap-2">
+            {plan.tasks.map((task) => (
+              <div key={task} className="flex gap-2 text-sm leading-6">
+                <ListChecks
+                  className="mt-1 h-4 w-4 shrink-0 text-foreground"
+                  aria-hidden="true"
+                />
+                <span>{task}</span>
               </div>
-              <div className="grid gap-2">
-                {plan.affectedFiles.length ? plan.affectedFiles.map((file) => (
-                  <code
-                    key={file}
-                    className="border border-foreground bg-secondary/50 px-3 py-2 text-xs"
-                  >
-                    {file}
-                  </code>
-                )) : (
-                  <div className="border border-foreground bg-secondary/40 px-3 py-2 text-xs text-muted-foreground">
-                    No unique file candidates found for this theme.
-                  </div>
-                )}
-              </div>
+            ))}
             </div>
-            <div>
-              <div className="mb-2 text-xs font-semibold uppercase text-muted-foreground">
-                Tasks
-              </div>
-              <div className="grid gap-2">
-                {plan.tasks.map((task) => (
-                  <div key={task} className="flex gap-2 text-sm leading-6">
-                    <ListChecks
-                      className="mt-1 h-4 w-4 shrink-0 text-foreground"
-                      aria-hidden="true"
-                    />
-                    <span>{task}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </DetailsBlock>
-      </CardContent>
-    </Card>
+        </div>
+      </div>
+    </details>
   );
 }
 
@@ -736,6 +730,39 @@ function DetailsBlock({
       </summary>
       <div className="mt-3 grid gap-2">{children}</div>
     </details>
+  );
+}
+
+function CompactSection({
+  title,
+  description,
+  children
+}: {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <details className="group border border-foreground bg-secondary/25">
+      <summary className="grid cursor-pointer list-none gap-2 p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+        <div>
+          <div className="text-sm font-bold uppercase">{title}</div>
+          <div className="mt-1 text-xs leading-5 text-muted-foreground">
+            {description}
+          </div>
+        </div>
+        <Badge variant="outline">Open</Badge>
+      </summary>
+      <div className="border-t border-foreground p-3">{children}</div>
+    </details>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="text-xs font-bold uppercase text-muted-foreground">
+      {children}
+    </div>
   );
 }
 
